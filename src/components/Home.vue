@@ -1,6 +1,7 @@
 <template>
   <div>
-    <el-button type="info" @click="logout">退出</el-button>
+    home主页
+    <el-button @click="logout">退出</el-button>
   </div>
 </template>
 
@@ -15,5 +16,4 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
-</style>
+<style lang="less" scoped></style>
