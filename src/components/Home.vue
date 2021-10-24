@@ -18,8 +18,9 @@
           :collapse="isCollapse"
           :collapse-transition="false"
           router
+          :default-active="activePath"
         >
-          <el-submenu :index="item.id" v-for="item in menulist" :key="item.id">
+          <el-submenu :index="item.id + ''" v-for="item in menulist" :key="item.id">
             <template slot="title">
               <i :class="iconObj[item.id]"></i>
               <span>{{ item.authName }}</span>
@@ -29,6 +30,7 @@
               :index="'/' + subItem.path"
               v-for="subItem in item.children"
               :key="subItem.id"
+              @click="saveNaveStatus('/' + subItem.path)"
             >
               <template slot="title">
                 <i class="el-icon-menu"></i>
@@ -57,11 +59,13 @@ export default {
         102: 'iconfont icon-danju',
         145: 'iconfont icon-baobiao'
       },
-      isCollapse: false
+      isCollapse: false,
+      activePath: ''
     }
   },
   created() {
     this.getMenuList()
+    this.activePath = window.sessionStorage.getItem('activePath')
   },
   methods: {
     logout() {
@@ -70,12 +74,15 @@ export default {
     },
     async getMenuList() {
       const { data: res } = await this.$http.get('menus')
-      console.log(res)
       if (res.meta.status !== 200) return this.$message.error(res.meta.msg)
       this.menulist = res.data
     },
     toggleCollapse() {
       this.isCollapse = !this.isCollapse
+    },
+    saveNaveStatus(activePath) {
+      window.sessionStorage.setItem('activePath', activePath)
+      this.activePath = activePath
     }
   }
 }
