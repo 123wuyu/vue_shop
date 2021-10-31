@@ -6,6 +6,7 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  min-width: 1366px;
 }
 
 .el-breadcrumb {
@@ -20,4 +21,12 @@ body,
 
 .el-pagination {
   margin-top: 15px;
+}
+
+.bd-top {
+  border-top: 1px solid #000;
+}
+
+.bd-bottom {
+  border-bottom: 1px solid #000;
 }

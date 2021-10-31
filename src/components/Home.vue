@@ -34,7 +34,7 @@
             >
               <template slot="title">
                 <i class="el-icon-menu"></i>
-                <span>{{ item.authName }}</span>
+                <span>{{ subItem.authName }}</span>
               </template>
             </el-menu-item>
           </el-submenu>
